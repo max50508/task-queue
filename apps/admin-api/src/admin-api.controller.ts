@@ -9,4 +9,9 @@ export class AdminApiController {
   getHello(): string {
     return this.adminApiService.getHello();
   }
+
+  @Get('health')
+  getHealth() {
+    return this.adminApiService.getHealth();
+  }
 }

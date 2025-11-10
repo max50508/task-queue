@@ -6,6 +6,7 @@ export class WorkerService implements OnModuleInit {
   constructor(private readonly cfg: ConfigAppService) {}
 
   onModuleInit() {
+    this.logger.log(`Worker ready. (mock)`);
     this.logger.log(`RabbitMQ: ${this.cfg.getRabbitUri()}`);
     // 這裡接上你的 Rabbit 消費者初始化...
   }

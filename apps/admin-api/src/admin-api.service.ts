@@ -5,7 +5,7 @@ import { Injectable } from '@nestjs/common';
 export class AdminApiService {
   constructor(private readonly configService: ConfigAppService) {}
 
-  health() {
+  getHealth() {
     return {
       ok: true,
       env: this.configService.getNodeEnv(),
