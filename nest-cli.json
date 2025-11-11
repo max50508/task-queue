@@ -37,6 +37,15 @@
         "tsConfigPath": "libs/contracts/tsconfig.lib.json"
       }
     },
+    "mq-core": {
+      "type": "library",
+      "root": "libs/mq-core",
+      "entryFile": "index",
+      "sourceRoot": "libs/mq-core/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/mq-core/tsconfig.lib.json"
+      }
+    },
     "worker": {
       "type": "application",
       "root": "apps/worker",

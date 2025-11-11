@@ -33,6 +33,12 @@
       ],
       "@app/contracts/*": [
         "libs/contracts/src/*"
+      ],
+      "@app/mq-core": [
+        "libs/mq-core/src"
+      ],
+      "@app/mq-core/*": [
+        "libs/mq-core/src/*"
       ]
     }
   }
