@@ -16,6 +16,10 @@ export class ConfigAppService {
     return this.config.get('NODE_ENV', { infer: true });
   }
 
+  getMockMode() {
+    return this.config.get('MOCK_MODE', { infer: true });
+  }
+
   getPort() {
     return this.config.get('PORT', { infer: true });
   }

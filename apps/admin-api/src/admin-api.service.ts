@@ -30,14 +30,19 @@ export class AdminApiService {
   }
 
   async enqueueEmail(dto: EnqueueEmailDto): Promise<{ jobId: string }> {
+    const idempotencyKey = randomUUID();
     const msg: BaseTaskType<EnqueueEmailDto> = {
-      id: randomUUID(),
+      id: idempotencyKey,
       type: TaskEnum.EMAIL_SEND,
       payload: dto,
-      idempotencyKey: randomUUID(),
+      idempotencyKey,
       createdAt: new Date().toISOString(),
     };
-    await this.mqPublisher.mqPublish(EXCHANGE, RoutingKey.EMAIL_SEND, msg);
+    await this.mqPublisher.mqPublish(EXCHANGE, RoutingKey.EMAIL_SEND, msg, {
+      messageId: idempotencyKey,
+      persistent: true,
+      headers: { 'x-idempotency-key': idempotencyKey },
+    });
     return { jobId: msg.id };
   }
 }

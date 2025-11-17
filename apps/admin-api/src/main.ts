@@ -21,7 +21,9 @@ async function bootstrap() {
 
   const cfg = app.get(ConfigAppService);
   const port = cfg.get('PORT');
+  const mockMode = cfg.getMockMode();
   console.log(`Starting Admin API on port ${port}...`);
+  console.log(`Mock mode: ${mockMode}`);
   await app.listen(port);
 }
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
