@@ -1,10 +1,14 @@
 import { ConfigAppService } from '@app/config';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { ZodValidationPipe } from 'nestjs-zod';
 import { AdminApiModule } from './admin-api.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AdminApiModule);
+
+  // 全域啟用 Zod 驗證（取代 class-validator 的 ValidationPipe）
+  app.useGlobalPipes(new ZodValidationPipe());
 
   // swagger api doc
   const swaggerConfig = new DocumentBuilder()
