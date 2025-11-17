@@ -90,6 +90,10 @@ export class MockGeneratorService {
             continue;
           }
         }
+        if (subSchema instanceof z.ZodString) {
+          obj[key] = faker.internet.url();
+          continue;
+        }
 
         obj[key] = this.mockBySchema(subSchema);
       }
